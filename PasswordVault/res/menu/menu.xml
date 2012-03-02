@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+	<item android:id="@+id/add"
+		android:title="@string/add_site_label"
+		android:alphabeticShortcut="@string/add_site" />
+	<item android:id="@+id/gen_pwd"
+		android:title="@string/gen_pwd"
+		android:alphabeticShortcut="@string/gen_pwd" />
+	<item android:id="@+id/location" android:title="@string/current_location" android:alphabeticShortcut="@string/current_location"></item>
+</menu>

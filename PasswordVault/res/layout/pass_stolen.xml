@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" 
+    android:padding="10dip">
+    <TextView
+        android:id="@+id/intent_grabber"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        android:textSize="30dp" 
+    />
+    <set xmlns:android="http://schemas.android.com/apk/res/android">
+        
+	    <translate
+	        xmlns:android="http://schemas.android.com/apk/res/android"
+	        android:fromXDelta="300%"
+	        android:toXDelta="0%"
+	    />
+    </set>
+</ScrollView>
