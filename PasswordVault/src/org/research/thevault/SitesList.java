@@ -20,7 +20,6 @@ import android.widget.AdapterView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
-
 public class SitesList extends ListActivity implements Constants{
 	
 	private SiteTable st;
@@ -33,8 +32,10 @@ public class SitesList extends ListActivity implements Constants{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sites_list);
         
+        //alert system we want to use a contextmenu
         registerForContextMenu(getListView()); 
         
+        //instanciate variables
         st = new SiteTable( this );
         cursor = getSites();
         showSites( cursor );
@@ -43,6 +44,7 @@ public class SitesList extends ListActivity implements Constants{
         registerForContextMenu( l );
 	}
 	
+    //catcht the activity destruction and close the cursor
 	@Override
 	public void onDestroy(){
 	    if( cursor != null )
@@ -52,6 +54,7 @@ public class SitesList extends ListActivity implements Constants{
 	    super.onDestroy();
 	}
 	
+    //method to create the options menu
 	@Override
     public boolean onCreateOptionsMenu( Menu menu ){
     	super.onCreateOptionsMenu( menu );
@@ -77,6 +80,7 @@ public class SitesList extends ListActivity implements Constants{
     	return false;
     }
     
+    //get a cursor containing all the sites user has stored
     public Cursor getSites(){
     	db = st.getReadableDatabase();
 		cursor = db.rawQuery( "SELECT * FROM " + SITE_TABLE_NAME, null);
@@ -84,14 +88,15 @@ public class SitesList extends ListActivity implements Constants{
 		return cursor;
     }
     
+    //add all the sites to listview
     public void showSites( Cursor cursor){
-    	
     	String[] from = { URL };
     	int[] to = { R.id.url_item };
     	adapter = new SimpleCursorAdapter( this, R.layout.site_item, cursor, from, to);
 		setListAdapter( adapter );
     }
     
+    //method to figure out what item was clicked
     @Override
     protected void onListItemClick( ListView l, View v, int position, long id ){
     	super.onListItemClick(l, v, position, id);
@@ -100,28 +105,43 @@ public class SitesList extends ListActivity implements Constants{
     	showDetails();
     }
     
+    //context menu item was selected
     @Override 
     public boolean onContextItemSelected(MenuItem item) { 
-    	if( item.getItemId() == 0 || item.getItemId() == 1 ){
+    	
+        //check if item clicked was one of our groups
+        if( item.getItemId() == 0 || item.getItemId() == 1 ){
     		AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo)item.getMenuInfo();
     		cursor.moveToPosition( info.position );
     	}
+        
+        //figure out what option was selected
     	switch( item.getItemId() ){
+                
+            //delete was selected, delete selected site from db
     		case 0:
 		    	int id = cursor.getInt( cursor.getColumnIndex( _ID ));
 		    	db = st.getWritableDatabase();
 		    	db.delete(SITE_TABLE_NAME, _ID + "=" + id, null);
 		    	cursor.requery();
 		    	break;
+            
+            //View Details was selected so launch show details
     		case 1:
     			showDetails();
     			break;
+                
+            //Add Site selected so call addSite()
     		case 2:
     			addSite();
     			break;
+                
+            //Generate Password was selected so call genPass()
     		case 3:
     		    genPass();
     		    break;
+                
+            //View Current Location was selected so call getGeneratedLocation()
     		case 4:
     			getGeneratedLocation();
     			break;
@@ -132,7 +152,9 @@ public class SitesList extends ListActivity implements Constants{
     @Override 
     // Long click menu options
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) { 
-    	if(v.getId() != R.id.site_container ){
+    	
+        //check what to add to the context menu
+        if(v.getId() != R.id.site_container ){
     		menu.add( 1, 0, Menu.NONE, "Delete" );
     		menu.add( 1, 1, Menu.NONE,"View Details" );
     	}
@@ -155,11 +177,13 @@ public class SitesList extends ListActivity implements Constants{
     	startActivity( details );
     }
     
+    //launches activity to add a site to the database
     private void addSite(){
     	Intent addSite = new Intent( this, AddPage.class );
 		startActivity( addSite );
     }
     
+    //launches activity to generate password
     private void genPass() {
         Intent genPass = new Intent(this, GeneratePass.class);
         startActivity( genPass );

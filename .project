@@ -30,11 +30,4 @@
 		<nature>com.android.ide.eclipse.adt.AndroidNature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
-	<linkedResources>
-		<link>
-			<name>bin/res/drawable-nodpi/pacman.png</name>
-			<type>1</type>
-			<location>/Users/newkirkj1/Desktop/pacman.png</location>
-		</link>
-	</linkedResources>
 </projectDescription>

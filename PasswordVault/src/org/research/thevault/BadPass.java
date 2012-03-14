@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
+//activity to alert the user they entered a bad password
 public class BadPass extends Activity{
 	
 	@Override
@@ -20,6 +21,7 @@ public class BadPass extends Activity{
 		
 	}
 	
+	//method to finish the activity on user touch
 	@Override
 	public boolean onTouchEvent( MotionEvent mEvent ){
 		finish();

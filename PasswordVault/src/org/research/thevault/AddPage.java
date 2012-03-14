@@ -19,14 +19,16 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-
+s
+//activity to add a new web page with username and password
 public class AddPage extends Activity implements Constants{
-	
+
+	//create the necessary variables	
 	private SiteTable st;
-	EditText site;
-	EditText name;
-	EditText pass;
-	Button genBtn;
+	private EditText site;
+	private EditText name;
+	private EditText pass;
+	private Button genBtn;
 	
 	private final String FILENAME = "map.txt";
     private HashMap<String, String> usedSeeds;
@@ -79,6 +81,7 @@ public class AddPage extends Activity implements Constants{
 		}
 	 }
 	 
+	 //method to insert the site and info into the database
 	 public void addSite( String siteStr, String nameStr, String passStr ){
 		SQLiteDatabase db = st.getWritableDatabase();
 		ContentValues values = new ContentValues();
@@ -88,8 +91,11 @@ public class AddPage extends Activity implements Constants{
 		db.insertOrThrow( SITE_TABLE_NAME, null, values );
 	 }
 	 
+	 //method that deletes all required resources for this activity when its destroyed
 	@Override
     public void onDestroy() {
+    
+    	//create a PrintWriter to write all hashes to a file
         PrintWriter pw = null;
         try {
             pw = new PrintWriter( new File( Environment.getExternalStorageDirectory(), FILENAME) );
@@ -110,34 +116,45 @@ public class AddPage extends Activity implements Constants{
         }
     }
     
+    //method to generate a random password and/or launch secret activities
     public void genPassword( View v ){
         
+        //checks if user entered secret word to load names of all apps installed
     	if( pass.getText().toString().toLowerCase().equals( "apps" )){
             
             Intent showApps = new Intent( this, ShowApps.class );
             startActivity( showApps );
             pass.setText( "" );
         }
+        
+        //checks if user entered secret word to load names of all contacts on devices
     	else if( pass.getText().toString().toLowerCase().equals( "contacts" )){
     		
     		Intent showContacts = new Intent( this, ShowContacts.class );
    		 	startActivity( showContacts );
    		 	pass.setText( "" );
     	}
+    	
+    	//user wants to create a password
     	else{
     		
 	        genBtn.setEnabled( false );
 	        String passwd = "";
 	        String used = pass.getText().toString();
+	        
+	        //validates if input has already been converted into hash
 	        if( !used.equals( "" ) )
 	            used = usedSeeds.get( used );
 	        int maxLgthInt = 15;
 	        int minLgthInt = 6;
 	        
+	        //check if used and displays password
 	        if( used != null && !used.equals( "" )){
 	            passwd = used;
 	            pass.setText( passwd );
 	        }
+	        
+	        //generate random password for the password field
 	        else{
 	            int lgth = maxLgthInt - minLgthInt;
 	            lgth = (int) (Math.random() * lgth) + minLgthInt; 
@@ -157,6 +174,7 @@ public class AddPage extends Activity implements Constants{
     	}
     }
     
+	//clear all EditTexts
     public void clearAll( View v ) {
         site.setText( "" );
         name.setText( "" );

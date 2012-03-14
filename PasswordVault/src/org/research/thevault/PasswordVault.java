@@ -14,12 +14,13 @@ import android.widget.ToggleButton;
 import android.view.View;
 import android.view.View.OnClickListener;
 
-
+//default activity for the app, has an intentional sql injection
 public class PasswordVault extends Activity implements OnClickListener, Constants{
     
-	Cursor cursor;
-	SQLiteDatabase db;
-	EditText pWord;
+    //create the variables
+	private Cursor cursor;
+	private SQLiteDatabase db;
+	private EditText pWord;
 	
     /** Called when the activity is first created. */
     @Override
@@ -27,6 +28,7 @@ public class PasswordVault extends Activity implements OnClickListener, Constant
         super.onCreate(savedInstanceState);
         setContentView(R.layout.password_vault);
         
+        //instaniate the variables and add an onClick listener
         pWord = (EditText) findViewById( R.id.login_password1 );
         Button loginButton = (Button) findViewById( R.id.login_button );
         loginButton.setOnClickListener( this );
@@ -38,6 +40,8 @@ public class PasswordVault extends Activity implements OnClickListener, Constant
         displayButton.setOnClickListener( this );
         
     }
+    
+    //catch the activity being destroyed and close the cursor
     @Override
     public void onDestroy() {
         if( cursor != null )
@@ -47,10 +51,17 @@ public class PasswordVault extends Activity implements OnClickListener, Constant
         super.onDestroy();
     }
     
+    //method to catch the user clicking buttons
 	public void onClick( View v ){
-    	switch ( v.getId() ){
+    	
+        //find out what button was clicked
+        switch ( v.getId() ){
+                
+        //check if user wants to log in
     	case R.id.login_button:
     		validateLogin();
+                
+            //check if user entered a valid password
     		if( cursor != null && cursor.moveToFirst() ){
     			ToggleButton intentSwitch = (ToggleButton) findViewById( R.id.intent_grabber );
     			if( !intentSwitch.isChecked() ){
@@ -65,6 +76,8 @@ public class PasswordVault extends Activity implements OnClickListener, Constant
     				startActivity( grab );
     			}
     		}
+                
+            //display the badPass activity
     		else{
     			Intent badPass = new Intent( this, BadPass.class );
 	    		badPass.putExtra("Password", pWord.getText().toString());
@@ -72,10 +85,13 @@ public class PasswordVault extends Activity implements OnClickListener, Constant
     		}
     		break;
     		
+        //display the about activity
     	case R.id.about_button:
     		Intent about = new Intent( this, About.class );
     		startActivity( about );
     		break;
+                
+        //display the displayPassword activity
     	case R.id.display_button:
     		Intent display = new Intent( this, DisplayPassword.class );
     		display.putExtra( "PASSWORD",  pWord.getText().toString() );
@@ -83,10 +99,16 @@ public class PasswordVault extends Activity implements OnClickListener, Constant
     		break;
     	}
     }
+    
+    //verify the user is granted to log in, sql injection lies here
     public void validateLogin(){
+        
+        //create the table
     	PasswordTable pt = new PasswordTable( this );
     	db = pt.getReadableDatabase();
     	cursor = null;
+        
+        //try and get password and check if logged in
     	try{
 			cursor = db.rawQuery( "SELECT "+ PWORD + " FROM " + PASS_TABLE_NAME
 					+ " WHERE " + PWORD + "='" + pWord.getText().toString() + "'", null);
