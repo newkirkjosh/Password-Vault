@@ -19,7 +19,7 @@ import android.os.Environment;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-s
+
 //activity to add a new web page with username and password
 public class AddPage extends Activity implements Constants{
 
