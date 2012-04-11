@@ -44,6 +44,9 @@
 	<string name="empty2">No Contacts!</string>
 	<string name="pwd_stolen">Password Recorded</string>
 	<string name="current_location">View Current Location</string>
-	<string name="empty3">No Locations!</string>
+	<string name="empty3">There are no recent locations!</string>
+	<string name="location_no_items">No locations have been recorded yet.</string>
+	<string name="display_location_title">Recent Locations Visited</string>
+	<string name="gen_random_location">Your Current Location</string>
     
 </resources>

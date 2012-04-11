@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.MotionEvent;
 
-//activity to display the user entered a bad password
 public class BadPageDetails extends Activity{
 	
 	@Override
@@ -13,7 +12,6 @@ public class BadPageDetails extends Activity{
 		setContentView( R.layout.bad_page_screen );
 	}
 	
-	//method to kill activity on user touch
 	@Override
 	public boolean onTouchEvent( MotionEvent mEvent ){
 		finish();

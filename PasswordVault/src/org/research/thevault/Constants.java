@@ -2,7 +2,6 @@ package org.research.thevault;
 
 import android.provider.BaseColumns;
 
-//constants that will be used in the database
 public interface Constants extends BaseColumns {
 	
 	public static final String PASS_TABLE_NAME = "password" ;

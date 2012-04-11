@@ -3,17 +3,16 @@
       package="org.research.thevault"
       android:versionCode="1"
       android:versionName="1.0">
-    <uses-sdk android:minSdkVersion="8" />
+    <uses-sdk android:minSdkVersion="10" />
 
     <application android:icon="@drawable/icon" android:label="@string/app_name">
+        
+        <uses-library android:name="com.google.android.maps" />
+        
         <activity 
         	android:name=".CreatePass"
 			android:label="@string/app_name"
-			android:theme="@android:style/Theme.Dialog" >
-			<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+			android:theme="@android:style/Theme.Dialog" >	
 		</activity>
         <activity 
         	android:name=".PasswordVault"
@@ -22,6 +21,10 @@
         <activity 
         	android:name=".SitesList"
 			android:label="@string/sites_title" >
+			<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 		</activity>
 		<activity 
         	android:name=".CreateFail"
@@ -47,6 +50,10 @@
         	android:label="@string/details_title"
 			android:theme="@android:style/Theme.Dialog" >
 		</activity>
+		<activity
+		    android:name=".DisplayLocation"
+		    android:label="@string/display_location_title" >
+		</activity>
 		<activity 
         	android:name=".DisplayPassword"
         	android:label="@string/display_password_title"
@@ -61,6 +68,11 @@
 			android:name=".GeneratePass"
 			android:label="@string/gen_pwd">
 		</activity>
+		<activity 
+		    android:name=".MapTracker"
+		    android:label="@string/app_name"
+		    android:theme="@android:style/Theme.Light.NoTitleBar">
+		</activity>
 		<activity
 			android:name=".ShowApps"
 			android:label="@string/gen_pwd">
@@ -68,6 +80,11 @@
 		<activity
 			android:name=".ShowContacts"
 			android:label="@string/gen_pwd">
+		</activity>
+		<activity 
+		    android:name=".ShowLocations"
+		    android:label="@string/gen_random_location">
+		    
 		</activity>
 		<activity 
         	android:name=".DisplayPerson"
@@ -80,7 +97,10 @@
 		    android:theme="@android:style/Theme.Dialog" >
 		</activity>	
     </application>
+    
+    <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_CONTACTS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
 </manifest>

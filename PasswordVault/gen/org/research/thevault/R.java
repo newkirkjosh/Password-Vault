@@ -21,7 +21,7 @@ public final class R {
     }
     public static final class id {
         public static final int ContactBadge=0x7f070012;
-        public static final int about_button=0x7f070024;
+        public static final int about_button=0x7f070025;
         public static final int about_page=0x7f070000;
         public static final int add=0x7f070029;
         public static final int add_button=0x7f070004;
@@ -36,22 +36,22 @@ public final class R {
         public static final int contact_item=0x7f07000c;
         public static final int create_button=0x7f070010;
         public static final int create_fail_content=0x7f07000d;
-        public static final int display_button=0x7f070025;
+        public static final int display_button=0x7f070026;
         public static final int display_password_page=0x7f07001a;
         public static final int gen_button=0x7f070005;
         public static final int gen_pass=0x7f07001d;
         public static final int gen_pwd=0x7f07002a;
         public static final int generate_button=0x7f07001e;
-        public static final int intent_grabber=0x7f070021;
+        public static final int intent_grabber=0x7f070022;
         public static final int location=0x7f07002b;
         public static final int location_item=0x7f070020;
-        public static final int locationsList=0x7f070027;
-        public static final int login_button=0x7f070023;
-        public static final int login_password1=0x7f070022;
+        public static final int login_button=0x7f070024;
+        public static final int login_password1=0x7f070023;
+        public static final int mapview=0x7f070021;
         public static final int max_text=0x7f07001c;
         public static final int min_text=0x7f07001b;
         public static final int password=0x7f07000e;
-        public static final int site_container=0x7f070026;
+        public static final int site_container=0x7f070027;
         public static final int site_details=0x7f070011;
         public static final int textAddress=0x7f070016;
         public static final int textEmail=0x7f070015;
@@ -81,13 +81,14 @@ public final class R {
         public static final int display_password=0x7f03000c;
         public static final int generate_pass=0x7f03000d;
         public static final int location_item=0x7f03000e;
-        public static final int pass_stolen=0x7f03000f;
-        public static final int password_vault=0x7f030010;
-        public static final int show_apps=0x7f030011;
-        public static final int show_contacts=0x7f030012;
-        public static final int show_locations=0x7f030013;
-        public static final int site_item=0x7f030014;
-        public static final int sites_list=0x7f030015;
+        public static final int map_tracker=0x7f03000f;
+        public static final int pass_stolen=0x7f030010;
+        public static final int password_vault=0x7f030011;
+        public static final int show_apps=0x7f030012;
+        public static final int show_contacts=0x7f030013;
+        public static final int show_locations=0x7f030014;
+        public static final int site_item=0x7f030015;
+        public static final int sites_list=0x7f030016;
     }
     public static final class menu {
         public static final int menu=0x7f060000;
@@ -112,6 +113,7 @@ public final class R {
         public static final int delete_site_label=0x7f050007;
         public static final int details_title=0x7f05001b;
         public static final int display_button=0x7f05001c;
+        public static final int display_location_title=0x7f05002c;
         public static final int display_password_title=0x7f05001d;
         public static final int empty=0x7f05001a;
         public static final int empty1=0x7f050026;
@@ -121,8 +123,10 @@ public final class R {
         public static final int enterstring=0x7f050000;
         public static final int fail_title=0x7f05000e;
         public static final int gen_pwd=0x7f050021;
+        public static final int gen_random_location=0x7f05002d;
         public static final int generate=0x7f050022;
         public static final int invalid_text=0x7f05000d;
+        public static final int location_no_items=0x7f05002b;
         public static final int login_button=0x7f050003;
         public static final int max_length=0x7f050024;
         public static final int min_length=0x7f050023;

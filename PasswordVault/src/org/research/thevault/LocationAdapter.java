@@ -1,51 +1,60 @@
 package org.research.thevault;
 
-import java.util.List;
+import java.util.ArrayList;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class LocationAdapter extends ArrayAdapter<Locations>{
 	
-	int resource;
-	String response;
-	Context context;
+	private ArrayList<Locations> items;		// List of locations
 	
-	public LocationAdapter(Context context, int resource, List<Locations> items)
+	public LocationAdapter(Context context, int resource, ArrayList<Locations> items)
 	{
 		super(context, resource, items);
-		this.resource = resource;
+		this.items = items;
 	}
 	
 	@Override
+	// Used to populate the view within a single textView
 	public View getView(int position, View convertView, ViewGroup parent)
 	{
-		LinearLayout locationView;
-		Locations locations = getItem(position);
-		
-		// Inflate the view
-		if(convertView == null)
+		View v = convertView;
+		if(v == null)
 		{
-			locationView = new LinearLayout(getContext());
 			String inflater = Context.LAYOUT_INFLATER_SERVICE;
-			LayoutInflater li;
-			li = (LayoutInflater)getContext().getSystemService(inflater);
-			li.inflate(resource, locationView, true);
+			LayoutInflater li = (LayoutInflater) getContext().getSystemService(inflater);
+			v = li.inflate(R.layout.display_location, null);
 		}
-		else
+		
+		Locations loc = items.get(position);
+		
+		if( loc != null )
 		{
-			locationView = (LinearLayout) convertView;
+			TextView lat = (TextView) v.findViewById(R.id.textLatitude);
+			TextView lng = (TextView) v.findViewById(R.id.textLongitude);
+			TextView add = (TextView) v.findViewById(R.id.textAddress);
+			TextView vn = (TextView) v.findViewById(R.id.textVisitNumber);
+			
+			if(lat != null){
+				lat.setText("Latitude: " + loc.getLatitude() );
+			}
+			if( lng != null ){
+				lng.setText("Longitude: " + loc.getLongitude() );
+			}
+			if( add != null){
+				add.setText("Address: " + loc.getAddress() );
+			}
+			if( vn != null){
+				vn.setText("Visit Number: " + loc.getVisitNum() );
+			}
 		}
 		
-		// Get the text boxes from the location_item.xml
-		TextView address;
-		
-		return convertView;
+		return v;
 	}
 
 }

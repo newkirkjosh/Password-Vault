@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.MotionEvent;
 import android.widget.TextView;
 
-//activity to show the details of the site a user clicks
 public class Details extends Activity implements Constants{
 	@Override
 	protected void onCreate( Bundle savedInstanceState ){
@@ -22,7 +21,6 @@ public class Details extends Activity implements Constants{
 		
 	}
 	
-	//method to finish the activity once the user touches the screen
 	@Override
 	public boolean onTouchEvent( MotionEvent me ){
 		finish();

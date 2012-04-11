@@ -2,11 +2,11 @@ package org.research.thevault;
 
 import java.io.Serializable;
 
-//person object
 public class Persons implements Serializable{
     
-    
-    //create the variables
+    /**
+     * 
+     */
     private static final long serialVersionUID = 1L;
     private String name;
     private String number;
@@ -14,8 +14,7 @@ public class Persons implements Serializable{
     private int photo;
     private String email;
     
-    //constructor
-    public Persons( String name, byte[] thumb, int photo ){
+    Persons( String name, byte[] thumb, int photo ){
         this.name = name;
         this.thumb = thumb;
         this.photo = photo;
@@ -23,7 +22,6 @@ public class Persons implements Serializable{
         email = "";
     }
     
-    //getters and setters
     public String getName() {
         return name;
     }

@@ -7,7 +7,7 @@
   	android:background="@drawable/temp" >
 
     <ListView
-        android:id="@+id/locationsList"
+        android:id="@android:id/list"
         android:layout_width="fill_parent"
 		android:layout_height="wrap_content"
 		android:cacheColorHint="#00000000"
