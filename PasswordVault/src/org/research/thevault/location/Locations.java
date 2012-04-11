@@ -1,4 +1,4 @@
-package org.research.thevault;
+package org.research.thevault.location;
 
 public class Locations {
 

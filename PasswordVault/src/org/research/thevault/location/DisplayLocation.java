@@ -1,10 +1,14 @@
-package org.research.thevault;
+package org.research.thevault.location;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import org.research.thevault.R;
+import org.research.thevault.R.layout;
+
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;

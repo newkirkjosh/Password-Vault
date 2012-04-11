@@ -1,4 +1,4 @@
-package org.research.thevault;
+package org.research.thevault.location;
 
 import java.io.BufferedReader;
 import java.io.File;
@@ -6,6 +6,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.research.thevault.R;
+import org.research.thevault.R.id;
+import org.research.thevault.R.layout;
 
 import android.graphics.Canvas;
 import android.graphics.Color;

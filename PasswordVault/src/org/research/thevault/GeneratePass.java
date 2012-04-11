@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.research.thevault.location.DisplayLocation;
+import org.research.thevault.location.MapTracker;
+
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Intent;

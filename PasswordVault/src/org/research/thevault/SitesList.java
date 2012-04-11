@@ -1,5 +1,7 @@
 package org.research.thevault;
 
+import org.research.thevault.location.ShowLocations;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.database.Cursor;

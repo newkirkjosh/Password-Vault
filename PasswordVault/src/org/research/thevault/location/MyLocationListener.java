@@ -1,4 +1,4 @@
-package org.research.thevault;
+package org.research.thevault.location;
 
 import android.location.Location;
 import android.location.LocationListener;
