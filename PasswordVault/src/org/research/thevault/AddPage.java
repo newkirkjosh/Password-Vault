@@ -10,6 +10,9 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.research.thevault.apps.ShowApps;
+import org.research.thevault.contacts.ShowContacts;
+
 import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Intent;

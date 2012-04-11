@@ -10,6 +10,8 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.Map.Entry;
 
+import org.research.thevault.apps.ShowApps;
+import org.research.thevault.contacts.ShowContacts;
 import org.research.thevault.location.DisplayLocation;
 import org.research.thevault.location.MapTracker;
 

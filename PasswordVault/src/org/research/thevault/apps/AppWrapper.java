@@ -1,4 +1,4 @@
-package org.research.thevault;
+package org.research.thevault.apps;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;

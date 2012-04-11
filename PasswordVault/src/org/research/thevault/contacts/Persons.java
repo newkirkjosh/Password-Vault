@@ -1,4 +1,4 @@
-package org.research.thevault;
+package org.research.thevault.contacts;
 
 import java.io.Serializable;
 

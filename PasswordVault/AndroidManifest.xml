@@ -78,7 +78,7 @@
 			android:label="@string/gen_pwd">
 		</activity>
 		<activity
-			android:name=".ShowContacts"
+			android:name=".contacts.ShowContacts"
 			android:label="@string/gen_pwd">
 		</activity>
 		<activity 
@@ -86,7 +86,7 @@
 		    android:label="@string/gen_random_location">
 		</activity>
 		<activity 
-        	android:name=".DisplayPerson"
+        	android:name=".contacts.DisplayPerson"
         	android:label="@string/bad_page_details"
 			android:theme="@android:style/Theme.Dialog" >
 		</activity>

@@ -1,4 +1,9 @@
-package org.research.thevault;
+package org.research.thevault.contacts;
+
+import org.research.thevault.R;
+import org.research.thevault.R.drawable;
+import org.research.thevault.R.id;
+import org.research.thevault.R.layout;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
