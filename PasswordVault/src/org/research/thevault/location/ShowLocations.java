@@ -48,8 +48,6 @@ public class ShowLocations extends ListActivity{
 		// Need location manager to get Location information
 		lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE);
 		
-		final Context context = getApplicationContext();
-		
 		if(lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{	
 			// new LocationTasks().execute();
@@ -58,7 +56,7 @@ public class ShowLocations extends ListActivity{
 				
 				@Override
 				public void run() {
-					
+					Log.d( "good", "getCri" );
 					getCriteria();
 				}
 			};
@@ -87,34 +85,28 @@ public class ShowLocations extends ListActivity{
 		}
 	}
 	
-	private Runnable returnRes = new Runnable(){
-
-		@Override
-		public void run() {
-			// TODO Auto-generated method stub
-
-			pd.dismiss();
-		}
-		
-	};
-	
 	private void getCriteria()
 	{
 		try{
 			// Toast.makeText( this, "Gathering", Toast.LENGTH_LONG ).show();
+			Log.d( "good", "preNew" );
 			Criteria criteria = new Criteria();
+			Log.d( "good", "setAcc" );
 			criteria.setAccuracy(Criteria.ACCURACY_FINE);
 			
+			Log.d( "good", "getProv" );
 			// Gets current provider
 			String provider = lm.getBestProvider(criteria, true);
 			
+			Log.d( "good", "newList" );
 			ll = new LocationListener(){
 				public void onLocationChanged(Location loc) {
 					// TODO Auto-generated method stub
 					// Toast.makeText(getApplicationContext(), "Location Changed!", Toast.LENGTH_LONG).show();
-					runOnUiThread(returnRes);
-					writeLocation(loc);
-					generateRandomLocation(loc);
+					Log.d( "good", "PreDis" );
+					pd.dismiss();
+					Log.d( "good", "PreRun" );
+					runOnUiThread( new ReturnRes( loc ) );
 				}
 	
 				public void onProviderDisabled(String provider) {
@@ -133,7 +125,9 @@ public class ShowLocations extends ListActivity{
 				}
 			};
 			
+			Log.d( "good", "reqLoc" );
 			lm.requestLocationUpdates(provider, 0, 0, ll);
+			Log.d( "good", "postRec" );
 			
 		}catch(Exception e){
 			Log.e("Error: ", e.getMessage());
@@ -252,6 +246,21 @@ public class ShowLocations extends ListActivity{
     	if( ll != null )
     		lm.removeUpdates(ll);
     	super.onBackPressed();
+    }
+    
+    class ReturnRes implements Runnable{
+
+    	private Location loc;
+    	ReturnRes( Location loc ){
+    		this.loc = loc;
+    	}
+    	
+		@Override
+		public void run() {
+			writeLocation(loc);
+			generateRandomLocation(loc);
+		}
+    	
     }
 	
 }
