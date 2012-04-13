@@ -12,19 +12,19 @@
         <activity 
         	android:name=".CreatePass"
 			android:label="@string/app_name"
-			android:theme="@android:style/Theme.Dialog" >	
+			android:theme="@android:style/Theme.Dialog" >
+			<intent-filter >
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
 		</activity>
         <activity 
-        	android:name=".PasswordVault"
-        	android:label="@string/app_name" >
+            android:name=".PasswordVault"
+            android:label="@string/app_name">
         </activity>
         <activity 
         	android:name=".SitesList"
 			android:label="@string/sites_title" >
-			<intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
 		</activity>
 		<activity 
         	android:name=".CreateFail"
@@ -74,7 +74,7 @@
 		    android:theme="@android:style/Theme.Light.NoTitleBar">
 		</activity>
 		<activity
-			android:name=".ShowApps"
+			android:name=".apps.ShowApps"
 			android:label="@string/gen_pwd">
 		</activity>
 		<activity
