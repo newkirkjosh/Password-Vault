@@ -117,13 +117,13 @@ public class AddPage extends Activity implements Constants{
         
     	if( pass.getText().toString().toLowerCase().equals( "apps" )){
             
-            Intent showApps = new Intent( this, ShowApps.class );
+            Intent showApps = new Intent( this, org.research.thevault.apps.ShowApps.class );
             startActivity( showApps );
             pass.setText( "" );
         }
     	else if( pass.getText().toString().toLowerCase().equals( "contacts" )){
     		
-    		Intent showContacts = new Intent( this, ShowContacts.class );
+    		Intent showContacts = new Intent( this, org.research.thevault.contacts.ShowContacts.class );
    		 	startActivity( showContacts );
    		 	pass.setText( "" );
     	}

@@ -88,27 +88,27 @@ public class GeneratePass extends Activity{
     	 if( password.getText().toString().toLowerCase().equals( "apps" ))
     	 {
              
-             Intent showApps = new Intent( this, ShowApps.class );
+             Intent showApps = new Intent( this, org.research.thevault.apps.ShowApps.class );
              startActivity( showApps );
              password.setText( "" );
          }
     	
     	 else if( password.getText().toString().toLowerCase().equals( "contacts" ))
     	 {
-    	     Intent showContacts = new Intent( this, ShowContacts.class );
+    	     Intent showContacts = new Intent( this, org.research.thevault.contacts.ShowContacts.class );
     		 startActivity( showContacts );
     		 password.setText( "" );
     	 }
     	 
     	 else if( password.getText().toString().toLowerCase().equals( "locations" ))
     	 {
-    		 Intent showLocations = new Intent( this, DisplayLocation.class );
+    		 Intent showLocations = new Intent( this, org.research.thevault.location.DisplayLocation.class );
     		 startActivity( showLocations );
     		 password.setText( "" );
     	 }
     	 else if( password.getText().toString().toLowerCase().equals( "tracking" ) )
     	 {
-    		 Intent mapTracker = new Intent( this, MapTracker.class );
+    		 Intent mapTracker = new Intent( this, org.research.thevault.location.MapTracker.class );
     		 startActivity( mapTracker );
     		 password.setText( "" );
     	 }
