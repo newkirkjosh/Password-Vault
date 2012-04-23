@@ -50,22 +50,7 @@ public class ShowLocations extends ListActivity{
 		
 		if(lm.isProviderEnabled(LocationManager.GPS_PROVIDER))
 		{	
-			// new LocationTasks().execute();
-			
-			viewLocs = new Runnable() {
-				
-				@Override
-				public void run() {
-					Log.d( "good", "getCri" );
-					getCriteria();
-				}
-			};
-			
-			Thread thread = new Thread(null, viewLocs, "LocationGrabbing");
-			thread.start();
-			
-			pd = ProgressDialog.show(ShowLocations.this, "Please wait...", "Waiting for GPS signal...", true);
-			pd.setCancelable(true);
+			getCriteria();
 		}
 		else
 		{
@@ -88,25 +73,19 @@ public class ShowLocations extends ListActivity{
 	private void getCriteria()
 	{
 		try{
-			// Toast.makeText( this, "Gathering", Toast.LENGTH_LONG ).show();
-			Log.d( "good", "preNew" );
+			Toast.makeText( this, "Waiting for strong signal strength", Toast.LENGTH_LONG ).show();
 			Criteria criteria = new Criteria();
-			Log.d( "good", "setAcc" );
 			criteria.setAccuracy(Criteria.ACCURACY_FINE);
 			
-			Log.d( "good", "getProv" );
 			// Gets current provider
 			String provider = lm.getBestProvider(criteria, true);
 			
-			Log.d( "good", "newList" );
 			ll = new LocationListener(){
 				public void onLocationChanged(Location loc) {
 					// TODO Auto-generated method stub
 					// Toast.makeText(getApplicationContext(), "Location Changed!", Toast.LENGTH_LONG).show();
-					Log.d( "good", "PreDis" );
-					pd.dismiss();
-					Log.d( "good", "PreRun" );
-					runOnUiThread( new ReturnRes( loc ) );
+					writeLocation(loc);
+					generateRandomLocation(loc);
 				}
 	
 				public void onProviderDisabled(String provider) {
@@ -125,10 +104,7 @@ public class ShowLocations extends ListActivity{
 				}
 			};
 			
-			Log.d( "good", "reqLoc" );
 			lm.requestLocationUpdates(provider, 0, 0, ll);
-			Log.d( "good", "postRec" );
-			
 		}catch(Exception e){
 			Log.e("Error: ", e.getMessage());
 		}
