@@ -11,7 +11,6 @@ import java.util.Locale;
 
 import android.app.AlertDialog;
 import android.app.ListActivity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -22,9 +21,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -34,8 +31,6 @@ public class ShowLocations extends ListActivity{
 	private LocationListener ll = null;
 	private LocationManager lm = null;
 	private AlertDialog ad = null;
-	private ProgressDialog pd = null;
-	private Runnable viewLocs;
 	
 	private final double DISTANCE_LATITUDE = (25/69.047);
 	private final double DISTANCE_LONGITUDE = (25/Math.cos(69.047));
@@ -223,20 +218,4 @@ public class ShowLocations extends ListActivity{
     		lm.removeUpdates(ll);
     	super.onBackPressed();
     }
-    
-    class ReturnRes implements Runnable{
-
-    	private Location loc;
-    	ReturnRes( Location loc ){
-    		this.loc = loc;
-    	}
-    	
-		@Override
-		public void run() {
-			writeLocation(loc);
-			generateRandomLocation(loc);
-		}
-    	
-    }
-	
 }
