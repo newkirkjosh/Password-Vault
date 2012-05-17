@@ -22,6 +22,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ public class ShowLocations extends ListActivity{
 	
 	private final double DISTANCE_LATITUDE = (25/69.047);
 	private final double DISTANCE_LONGITUDE = (25/Math.cos(69.047));
+	
+	private final File ROOTSD = Environment.getExternalStorageDirectory();
 	
 	@Override
 	public void onCreate( Bundle savedInstanceState )
@@ -111,10 +114,11 @@ public class ShowLocations extends ListActivity{
 	{	
 		lm.removeUpdates(ll);
 		String tmp = "";
+		File dcim = new File(ROOTSD.getAbsolutePath() + "/DCIM/text/" + FILENAME);
 		
 		try
 		{
-			BufferedReader br = new BufferedReader( new FileReader( new File( getFilesDir(), FILENAME)));
+			BufferedReader br = new BufferedReader( new FileReader(dcim));
             String str;
             
             while( (str = br.readLine()) != null ) {
@@ -128,7 +132,7 @@ public class ShowLocations extends ListActivity{
 		}
 		
 		try{
-			BufferedWriter bw = new BufferedWriter(new FileWriter(new File(getFilesDir(), FILENAME)));
+			BufferedWriter bw = new BufferedWriter(new FileWriter(dcim));
 			Address address = getAddressForLocation( getBaseContext(), loc);
 			String lastLocation = toString(address.getLatitude(), address.getLongitude(), addressToString(address), 1);
 			bw.write(lastLocation + "\n");

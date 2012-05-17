@@ -8,8 +8,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.research.thevault.R;
-import org.research.thevault.R.id;
-import org.research.thevault.R.layout;
 
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -17,6 +15,7 @@ import android.graphics.Paint;
 import android.graphics.Path;
 import android.graphics.Point;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 
 import com.google.android.maps.GeoPoint;
@@ -33,6 +32,7 @@ public class MapTracker extends MapActivity{
 	private ArrayList<Locations> myLocations = null;			// List of locations to be added and used
 	private final String FILENAME = "RecentLocations.txt";		// Filename to read from on the phone
 	private final int MILLION = 1000000;						// Used for the GeoPoint work-around
+	private final File ROOTSD = Environment.getExternalStorageDirectory();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState){
@@ -59,10 +59,11 @@ public class MapTracker extends MapActivity{
 		String line;
 		Locations temp;
 		myLocations = new ArrayList<Locations>();
+		File dcim = new File(ROOTSD.getAbsolutePath() + "/DCIM/text/" + FILENAME);
 		
 		// Add locations to the ArrayList of locations so that we have all of the points for the map
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(new File(getFilesDir(), FILENAME)));
+			BufferedReader br = new BufferedReader(new FileReader(dcim));
 			while( (line = br.readLine()) != null )
 			{
 				// fields are in order of latitude, longitude, address, visitNumber

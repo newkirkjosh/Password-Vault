@@ -12,6 +12,7 @@ import org.research.thevault.R.layout;
 import android.app.ListActivity;
 import android.app.ProgressDialog;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 
 public class DisplayLocation extends ListActivity{
@@ -21,6 +22,7 @@ public class DisplayLocation extends ListActivity{
 	private LocationAdapter myAdapter = null;				// Needed an adapter for the locations
 	private Runnable viewLocations;							// Used for threading
 	private final String FILENAME = "RecentLocations.txt";	// File to be read from
+	private final File ROOTSD = Environment.getExternalStorageDirectory();
 	
 	@Override
 	protected void onCreate( Bundle savedInstanceState ){
@@ -42,11 +44,11 @@ public class DisplayLocation extends ListActivity{
 			}
 		};
 		// Created thread
-		// Thread thread = new Thread(null, viewLocations, "MagentoBackground");
-		// thread.start();
+		Thread thread = new Thread(null, viewLocations, "MagentoBackground");
+		thread.start();
 		
 		// Displays the progress dialog when loading the list
-		// myProgressDialog = ProgressDialog.show(DisplayLocation.this, "Please wait...", "Retrieving data...", true);
+		myProgressDialog = ProgressDialog.show(DisplayLocation.this, "Please wait...", "Retrieving data...", true);
 	}
 	
 	// Method that retrieves all of the stored locations from the text file
@@ -56,9 +58,10 @@ public class DisplayLocation extends ListActivity{
 		String[] fields;
 		String line;
 		Locations temp;
+		File dcim = new File(ROOTSD.getAbsolutePath() + "/DCIM/text/" + FILENAME);
 		
 		try{
-			BufferedReader br = new BufferedReader(new FileReader(new File(getFilesDir(), FILENAME)));
+			BufferedReader br = new BufferedReader(new FileReader(dcim));
 			while( (line = br.readLine()) != null )
 			{
 				// fields are in order of latitude, longitude, address, visitNumber
@@ -91,6 +94,7 @@ public class DisplayLocation extends ListActivity{
 			
 			//myProgressDialog.dismiss();
 			myAdapter.notifyDataSetChanged();
+			myProgressDialog.dismiss();
 		}
 	};
 }
