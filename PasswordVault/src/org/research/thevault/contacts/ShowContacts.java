@@ -1,11 +1,6 @@
 package org.research.thevault.contacts;
 
-import java.io.Serializable;
-
 import org.research.thevault.R;
-import org.research.thevault.R.drawable;
-import org.research.thevault.R.id;
-import org.research.thevault.R.layout;
 
 import android.app.ListActivity;
 import android.content.ContentResolver;
@@ -20,8 +15,10 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.provider.BaseColumns;
 import android.provider.ContactsContract;
-import android.provider.ContactsContract.CommonDataKinds.*;
-import android.provider.ContactsContract.*;
+import android.provider.ContactsContract.CommonDataKinds.Email;
+import android.provider.ContactsContract.CommonDataKinds.Phone;
+import android.provider.ContactsContract.Contacts;
+import android.provider.ContactsContract.Data;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;

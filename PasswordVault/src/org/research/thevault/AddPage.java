@@ -7,11 +7,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.Map.Entry;
-
-import org.research.thevault.apps.ShowApps;
-import org.research.thevault.contacts.ShowContacts;
+import java.util.Set;
 
 import android.app.Activity;
 import android.content.ContentValues;

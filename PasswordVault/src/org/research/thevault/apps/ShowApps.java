@@ -5,8 +5,6 @@ import java.util.Collections;
 import java.util.List;
 
 import org.research.thevault.R;
-import org.research.thevault.R.id;
-import org.research.thevault.R.layout;
 
 import android.app.ListActivity;
 import android.content.Context;

@@ -3,8 +3,6 @@ package org.research.thevault.location;
 import java.util.ArrayList;
 
 import org.research.thevault.R;
-import org.research.thevault.R.id;
-import org.research.thevault.R.layout;
 
 import android.content.Context;
 import android.view.LayoutInflater;

@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import org.research.thevault.R;
-import org.research.thevault.R.layout;
 
 import android.app.ListActivity;
 import android.app.ProgressDialog;

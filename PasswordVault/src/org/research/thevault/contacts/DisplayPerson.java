@@ -1,17 +1,14 @@
 package org.research.thevault.contacts;
 
 import org.research.thevault.R;
-import org.research.thevault.R.drawable;
-import org.research.thevault.R.id;
-import org.research.thevault.R.layout;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.view.MotionEvent;
-import android.widget.TextView;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 public class DisplayPerson extends Activity{
     @Override
